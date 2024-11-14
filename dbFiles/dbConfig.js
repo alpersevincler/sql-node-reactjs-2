@@ -11,6 +11,7 @@ const config = {
         instancename: 'SQLEXPRESS'
     },
     port: 1433
+    // ,"driver": "msnodesqlv8",
 }
 
 module.exports = config;
