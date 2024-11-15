@@ -21,4 +21,25 @@ const getEmployees = async() => {
     }
 };
 
-module.exports = { getEmployees };
+
+const createEmployee = async(Employee) => {
+    try {
+        // içinde bağlantı bilgileri olan config'i, mssql kütüphanesindeki connect fonk.una göndererek bağlantıyı gerçekleştirdik
+        let pool = await sql.connect(config);
+        // Database'e göndereceğimiz sorguyu tanımladık
+        queryCreate = `INSERT INTO EmployeeDemographics VALUES ( ${Employee.EmployeeID}, '${Employee.Firstname}','${Employee.Lastname}', ${Employee.Age}, '${Employee.Gender}' )`;
+        // tanımladığımız sorguyu bağlantıyı yaptığımız değişkenin(pool) altındaki query fonk. ile veritabanına gönderdik ve gelen cevabı employees'e atadık
+        let employees = await pool.request().query(queryCreate)
+
+        
+        
+
+        // sorgudan gelen cevabı geri dönderdik
+        return employees;
+    }
+    catch(error) {
+        console.log("createEmployee error = ",error);
+    }
+};
+ 
+module.exports = { getEmployees, createEmployee };
