@@ -13,7 +13,5 @@ const getEmployees = async() => {
         console.log("ov man",error);
     }
 };
- 
-module.exports = {
-    getEmployees
-} 
+
+module.exports = { getEmployees };

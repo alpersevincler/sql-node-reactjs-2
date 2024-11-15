@@ -1,0 +1,8 @@
+- SQL Server bağlantısını gerçekleştirmek server'daki bilgileri kosolda yazdırmak için:
+    dbFiles klasörü altına dbConfig.js dosyasını oluştur ve içine SQL Server'a bağlantı bilgilerini içeren tanımlamayı yap
+    dbFiles klasörü altına dbOperation.js dosyasını oluştur ve içine dbConfig.js'i ve mssql kütüphanesini import et
+        dbOperation.js'de import ettiğin config'i, mssql kütüphanesine göndererek bağlantıyı gerçekleştir.
+        Sonra mssql kütüphanesini kullanarak sorgu gönder ve bunu return et.
+        Tüm bunları bir fonksiyon içerisinde yap.
+    Ana dizine server.js dosyasını oluştur ve içine dbOperation.js'i import et.
+        dbOperation'un içindeki fonksiyonu çağır ve oradan gelecek cevabı konsolda yazdırabilirsin
