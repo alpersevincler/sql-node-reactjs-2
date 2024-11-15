@@ -1,3 +1,4 @@
+// SQL Server'a bağlantı için gereken bilgileri buraya tanımladık
 const config = {
     user: 'CodingWithAlper',
     password: '1234',

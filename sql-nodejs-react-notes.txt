@@ -6,3 +6,6 @@
         Tüm bunları bir fonksiyon içerisinde yap.
     Ana dizine server.js dosyasını oluştur ve içine dbOperation.js'i import et.
         dbOperation'un içindeki fonksiyonu çağır ve oradan gelecek cevabı konsolda yazdırabilirsin
+
+- package.json dosyasına "server": "nodemon server.js", ifadesini eklersen konsola "npm run server" yazdıktan sonra artık nodemon 
+    her kayıt aldığında otomatik server.js'i çalıştıracaktır
