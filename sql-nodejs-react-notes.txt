@@ -1,4 +1,4 @@
-- SQL Server bağlantısını gerçekleştirmek server'daki bilgileri kosolda yazdırmak için:
+- SQL Server bağlantısını gerçekleştirmek server'daki bilgileri konsolda yazdırmak için:
     dbFiles klasörü altına dbConfig.js dosyasını oluştur ve içine SQL Server'a bağlantı bilgilerini içeren tanımlamayı yap
     dbFiles klasörü altına dbOperation.js dosyasını oluştur ve içine dbConfig.js'i ve mssql kütüphanesini import et
         dbOperation.js'de import ettiğin config'i, mssql kütüphanesine göndererek bağlantıyı gerçekleştir.
@@ -9,3 +9,9 @@
 
 - package.json dosyasına "server": "nodemon server.js", ifadesini eklersen konsola "npm run server" yazdıktan sonra artık nodemon 
     her kayıt aldığında otomatik server.js'i çalıştıracaktır
+
+- Manuel Create işlemi kurgulamak adına:
+    dbFiles klasörü altına employee.js dosyasını oluştur, içine satır bilgilerini parametre alacak şekilde kurgula
+    dbOperation.js dosyasında createEmployee adında, INSERT sorgusunu gönderecek metodu kurgula
+    server.js'de employee.js'in sınıf modülünü çağırıp satır bilgilerini employee.js'e parametre olarak gönder. Gelen cevabı değişkene atayıp,
+     bunu dbOperation'daki createEmployee metoduna parametre olarak gönder

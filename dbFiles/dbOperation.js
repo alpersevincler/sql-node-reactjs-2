@@ -36,8 +36,8 @@ const createEmployee = async(Employee) => {
         return employees;
     }
     catch(error) {
-        console.log("createEmployee error = ",error);
+        console.log("createEmployee error = ", error);
     }
 };
- 
+
 module.exports = { getEmployees, createEmployee };
