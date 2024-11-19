@@ -21,19 +21,17 @@ const getEmployees = async() => {
     }
 };
 
-
+// içinde satır bilgileri olan class modülünü Employee adında parametre olarak aldık
 const createEmployee = async(Employee) => {
     try {
         // içinde bağlantı bilgileri olan config'i, mssql kütüphanesindeki connect fonk.una göndererek bağlantıyı gerçekleştirdik
         let pool = await sql.connect(config);
-        // Database'e göndereceğimiz sorguyu tanımladık
+        // Database'e göndereceğimiz sorguyu tanımladık. Gelen parametrenin içindeki bilgileri nokta(.) operatörü ile teker teker sorgumuzun içine yazdırdık
         queryCreate = `INSERT INTO EmployeeDemographics VALUES ( ${Employee.EmployeeID}, '${Employee.Firstname}','${Employee.Lastname}', ${Employee.Age}, '${Employee.Gender}' )`;
         // tanımladığımız sorguyu bağlantıyı yaptığımız değişkenin(pool) altındaki query fonk. ile veritabanına gönderdik ve gelen cevabı employees'e atadık
         let employees = await pool.request().query(queryCreate)
 
         
-        
-
         // sorgudan gelen cevabı geri dönderdik
         return employees;
     }
