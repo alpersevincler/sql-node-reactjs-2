@@ -15,3 +15,7 @@
     dbOperation.js dosyasında createEmployee adında, INSERT sorgusunu gönderecek metodu kurgula
     server.js'de employee.js'in sınıf modülünü çağırıp satır bilgilerini employee.js'e parametre olarak gönder. Gelen cevabı değişkene atayıp,
      bunu dbOperation'daki createEmployee metoduna parametre olarak gönder
+
+- Konsola "npm i npm-run-all" yazıp npm-run-all paketini indirerek aynı anda hem Server'ı hem de React uygulamasını başlatabilirsin
+    Paketi yükledikten sonra package.json dosyasındaki "scripts": bloğunun altına "dev": "run-p server start" ifadesini yaz.
+     Böylece konsola npm run dev yazınca paralel olarak "scripts": bloğunun altındaki hem "server": hem de "start" tanımlamaları çalıştıracaktır
