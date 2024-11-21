@@ -45,7 +45,10 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'apllication/json'
-      }
+      },
+      body: JSON.stringify({
+        name: employee.Firstname
+      })
     })
     .then(res => res.json())
 
@@ -53,7 +56,9 @@ function App() {
     console.log("fetchData fetch newData = ", newData); //result: 'OMG HI from server'
 
     // yukarıda useState ile tanımlanmış returnedData'nın içeriğini newData'daki result'ın içeriği ile doldurduk ve sayfanın en altında {returnedData} şeklinde yazdırdık
-    setReturnedData(newData.result) //OMG HI from server
+    // setReturnedData(newData.result) //OMG HI from server
+
+    setReturnedData(newData[0])
   }
 
   return (

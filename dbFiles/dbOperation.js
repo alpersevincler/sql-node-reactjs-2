@@ -2,14 +2,16 @@ const config = require('./dbConfig'),
 sql = require('mssql');
 
 // SQL Server ile bağlatıyı gerçekleştir, sorgu gönder ve gelen cevabı geri dönder. Eğer hata varsa konsola yazdır
-const getEmployees = async() => {
+const getEmployees = async(firstname) => {
     try {
         // içinde bağlantı bilgileri olan config'i, mssql kütüphanesindeki connect fonk.una göndererek bağlantıyı gerçekleştirdik
         let pool = await sql.connect(config);
         // Database'e göndereceğimiz sorguyu tanımladık
-        querySelect = "SELECT * from dbo.EmployeeDemographics";
+        // querySelect = "SELECT * from dbo.EmployeeDemographics";
         // tanımladığımız sorguyu bağlantıyı yaptığımız değişkenin(pool) altındaki query fonk. ile veritabanına gönderdik ve gelen cevabı employees'e atadık
-        let employees = await pool.request().query(querySelect)
+        // let employees = await pool.request().query(querySelect)
+
+        let employees = await pool.request().query(`SELECT * from EmployeeDemographics WHERE Firstname = '${firstname}'`)
 
         // console.log("employees = ", employees);
 

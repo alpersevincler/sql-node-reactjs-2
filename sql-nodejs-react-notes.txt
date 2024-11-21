@@ -19,3 +19,5 @@
 - Konsola "npm i npm-run-all" yazıp npm-run-all paketini indirerek aynı anda hem Server'ı hem de React uygulamasını başlatabilirsin
     Paketi yükledikten sonra package.json dosyasındaki "scripts": bloğunun altına "dev": "run-p server start" ifadesini yaz.
      Böylece konsola npm run dev yazınca paralel olarak "scripts": bloğunun altındaki hem "server": hem de "start" tanımlamaları çalıştıracaktır
+
+- API Portunun 5000 de düzgün şekilde koşması için package.json'daki genel bloğun içine "proxy": "http://localhost:5000" ifadesini yazmalısın

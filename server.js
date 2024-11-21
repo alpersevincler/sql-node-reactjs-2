@@ -14,12 +14,17 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-// App.js'deki Click butonuna tıklayınca burası tetiklenecek ve geriye bir response gönderecek
-app.post('/api', function(req, res) {
-    // terminal konsolu
+// App.js'deki Click butonuna tıklayınca fetchData metodu ile bu post yapısı tetiklenecek ve geriye bir response gönderecek
+app.post('/api', async(req, res) => {
+    //burası tetiklendiği an terminal konsolunda called yazacaktır
     console.log('called /api from server');
-    // gönderilen cevap(response)
-    res.send({result: 'OMG HI from server'});
+
+    const result = await dbOperation.getEmployees(req.body.name);
+
+    //tetiklkendikten sonra geriye gönderilen cevabı(response) yazdık
+    // res.send({result: 'OMG HI from server'});
+
+    res.send(result.recordset);
 });
 
 app.post('/hello', function(req, res)  {
