@@ -37,16 +37,15 @@ function App() {
     console.log(employee)
 
     const newData = await fetch('/api', {
-      method: 'GET',
-      headers : {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'apllication/json'
       }
     })
     .then(res => res.json())
     console.log(newData);
     setReturnedData(newData.result)
-    
   }
 
   return (

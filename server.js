@@ -14,10 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
-app.get('/api', function (req, res)  {
-    console.log('called api');
-    // const result = await dbOperation.getEmployees(req.body.name);
-    // res.send({result: 'GO AWAY'});
+app.post('/api', function(req, res) {
+    console.log('called');
+    res.send({result: 'OMG HI'});
 });
 
 app.post('/hello', function(req, res)  {
