@@ -14,9 +14,12 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
+// App.js'deki Click butonuna tıklayınca burası tetiklenecek ve geriye bir response gönderecek
 app.post('/api', function(req, res) {
-    console.log('called');
-    res.send({result: 'OMG HI'});
+    // terminal konsolu
+    console.log('called /api from server');
+    // gönderilen cevap(response)
+    res.send({result: 'OMG HI from server'});
 });
 
 app.post('/hello', function(req, res)  {

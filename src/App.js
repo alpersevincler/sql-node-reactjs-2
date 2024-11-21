@@ -11,11 +11,12 @@ function App() {
 
   // <input>'lara onChange={setInput} özelliği vermiştik. inputa veri girildiğinde buraya e parametresini gönderecek
   const setInput = (e) => {
-    // e parametresinin altındaki target, girilen veriyi value, input'un name attribute'unu da name adında yakalayacaktır 
+    // e parametresinin altındaki target, girilen veriyi 'value', input'un name attribute'unu da 'name' adında yakalayacaktır 
     const {name, value} = e.target;
     // yakaladığımız, input'a girilen veriyi(value) ve veri girilen input'un name özelliğinin ismini(name), anlık olarak tarayıcı konsoluna yazdırdık
     console.log(value, name);
 
+    // Yakalanan verileri setEmployee ile useState ile tanımladığımız employee'ye set ettik
     // veritabanında EmployeeID ve Age'i number olarak tanımlamıştık dolayısıyla bu bilgiler integer olarak db'ye gitmeli. 
     // -Frontend'den girilen bilgiler string olarak yakalanmış olacak, bunun için name'i EmployeeID ve Age olan verileri if ile tespit edip Integer'a çevirdik
     if(name === 'EmployeeID' || name === 'Age') {
@@ -25,6 +26,7 @@ function App() {
       }));
     }
 
+    // Yakalanan verileri setEmployee ile useState ile tanımladığımız employee'ye set ettik
     setEmployee(prevState => ({
       ...prevState,
       [name]: value
@@ -33,9 +35,11 @@ function App() {
 
 
   const fetchData = async () => {
-    
-    console.log(employee)
+    // Click butonuna tıklandığında tarayıcı konsolunda yukarıda useState ile tanımlanmış emmloyee'nin içeriği yazılacaktır
+    console.log("fetchData employee = ", employee)
 
+    // fetch ile /api adresinde server.js ile bağlantı kurduk. server.js'de de app.post('/api' şeklinde yapı oluşturduk
+    // -server.js'deki bu yapıdan gelen cevabı res.json() şeklinde yakalayıp newData'ya atadık
     const newData = await fetch('/api', {
       method: 'POST',
       headers: {
@@ -44,8 +48,12 @@ function App() {
       }
     })
     .then(res => res.json())
-    console.log(newData);
-    setReturnedData(newData.result)
+
+    //Click butonuna tıklandığında server.js'den gelen newData bilgisini tarayıcı konsolunda yazdırdık
+    console.log("fetchData fetch newData = ", newData); //result: 'OMG HI from server'
+
+    // yukarıda useState ile tanımlanmış returnedData'nın içeriğini newData'daki result'ın içeriği ile doldurduk ve sayfanın en altında {returnedData} şeklinde yazdırdık
+    setReturnedData(newData.result) //OMG HI from server
   }
 
   return (
