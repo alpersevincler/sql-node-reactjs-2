@@ -11,7 +11,9 @@ const getEmployees = async(firstname) => {
         // tanımladığımız sorguyu bağlantıyı yaptığımız değişkenin(pool) altındaki query fonk. ile veritabanına gönderdik ve gelen cevabı employees'e atadık
         // let employees = await pool.request().query(querySelect)
 
-        let employees = await pool.request().query(`SELECT * from EmployeeDemographics WHERE Firstname = '${firstname}'`)
+        let queryClick = `SELECT * from EmployeeDemographics WHERE Firstname = '${firstname}'`;
+
+        let employees = await pool.request().query(queryClick)
 
         // console.log("employees = ", employees);
 

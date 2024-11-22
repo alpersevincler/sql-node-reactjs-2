@@ -80,7 +80,7 @@ function App() {
       <p>Age: {returnedData.Age}</p>
       <p>Gender: {returnedData.Gender}</p>
 
-      {returnedData}
+      {/* {returnedData} */}
 
     </div>
   );

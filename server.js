@@ -37,9 +37,9 @@ app.post('/hello', function(req, res)  {
 // import ettiğimiz Employee class modülünü new anahtarı ile oluşturup içine manuel olarak satır bilgilerini parametre olarak gönderdik
 let Pam = new Employee(1003, 'ayse', 'yil', 38, 'Female');
 
-// dbOperation.getEmployees().then(res => {
-//     console.log("res = ", res.recordset);
-// });
+dbOperation.getEmployees().then(res => {
+    console.log("res = ", res.recordset);
+});
 
 
 // içinde satır bilgileri olan Pam ismindeki class modül değişkenini, dbOperation.js'in içindeki createEmployee metoduna parametre olarak gönderdik
