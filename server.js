@@ -19,11 +19,14 @@ app.post('/api', async(req, res) => {
     //burası tetiklendiği an terminal konsolunda called yazacaktır
     console.log('called /api from server');
 
+    // App.js'den gelen bilginin(req) altındaki body'nin altındaki name bilgisini dbOperation.js'in içindeki getEmployees metoduna gönderdik.
+    //  -oradan gelen cevabı da result'a atadık
     const result = await dbOperation.getEmployees(req.body.name);
 
     //tetiklkendikten sonra geriye gönderilen cevabı(response) yazdık
     // res.send({result: 'OMG HI from server'});
 
+    // dbOperation.js'in içindeki getEmployees metodundan gelen bilginin(result) altındaki recordset bilgisini cevap(res) olarak geri döndürdük
     res.send(result.recordset);
 });
 

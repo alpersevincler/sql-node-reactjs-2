@@ -2,6 +2,7 @@ const config = require('./dbConfig'),
 sql = require('mssql');
 
 // SQL Server ile bağlatıyı gerçekleştir, sorgu gönder ve gelen cevabı geri dönder. Eğer hata varsa konsola yazdır
+// server.js'deki app.post('/api' yapısının içinden gönderilen parametreyi(req.body.name) firstname isminde parametre olarak aldık
 const getEmployees = async(firstname) => {
     try {
         // içinde bağlantı bilgileri olan config'i, mssql kütüphanesindeki connect fonk.una göndererek bağlantıyı gerçekleştirdik
@@ -11,8 +12,10 @@ const getEmployees = async(firstname) => {
         // tanımladığımız sorguyu bağlantıyı yaptığımız değişkenin(pool) altındaki query fonk. ile veritabanına gönderdik ve gelen cevabı employees'e atadık
         // let employees = await pool.request().query(querySelect)
 
+        // EmployeeDemographics tablosundan Firstname bilgisi server.js'den gelen firstname olan satırı getir şeklinde sorgu tanımladık
         let queryClick = `SELECT * from EmployeeDemographics WHERE Firstname = '${firstname}'`;
 
+        // yukarıda tanımladığımız sorguyu(queryClick) veritabanına gönderip gelen cevabı employees'e atadık
         let employees = await pool.request().query(queryClick)
 
         // console.log("employees = ", employees);

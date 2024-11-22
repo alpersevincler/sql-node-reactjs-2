@@ -39,7 +39,9 @@ function App() {
     console.log("fetchData employee = ", employee)
 
     // fetch ile /api adresinde server.js ile bağlantı kurduk. server.js'de de app.post('/api' şeklinde yapı oluşturduk
-    // -server.js'deki bu yapıdan gelen cevabı res.json() şeklinde yakalayıp newData'ya atadık
+    //  -server.js'deki bu yapıdan gelen cevabı res.json() şeklinde yakalayıp newData'ya atadık
+    // server.js ile bağlantıdan sonra bir body kısmı oluşturduk. body'nin içinde useState ile oluşturduğumuz employee'nin içindeki Firstname bilgisini
+    //  -çağırıp bunu name olarak tanımladık ve bunu da Json String formatına çevirdik. Bu bilgi server.js'e req(request) olarak gidecektir
     const newData = await fetch('/api', {
       method: 'POST',
       headers: {
@@ -58,6 +60,8 @@ function App() {
     // yukarıda useState ile tanımlanmış returnedData'nın içeriğini newData'daki result'ın içeriği ile doldurduk ve sayfanın en altında {returnedData} şeklinde yazdırdık
     // setReturnedData(newData.result) //OMG HI from server
 
+    // sayfada sadece 1 tane satır bilgisi göstermek istediğimizden server.js'den gelen cevapta 1den fazla içerik varsa sadece ilk elemanı yazdırmak istedik.
+    //  -bunun için newData[0] şeklinde sadece 0. elemanı useState'deki returnedData'ya gönderdik.
     setReturnedData(newData[0])
   }
 
@@ -74,6 +78,7 @@ function App() {
       <button onClick={() => fetchData()}>Create</button>
 
 
+      {/* Click butonuna tıklandığında fetchData metodu çalıştı ve bu metod useState'deki returnedData'ya DB'den gelen bilgileri aktardı */}
       <p>EmployeeID: {returnedData.EmployeeID}</p>
       <p>Firstname: {returnedData.Firstname}</p>
       <p>Lastname: {returnedData.Lastname}</p>
