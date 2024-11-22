@@ -1,4 +1,4 @@
-- SQL Server bağlantısını gerçekleştirmek server'daki bilgileri konsolda yazdırmak için:
+- SQL Server bağlantısını gerçekleştirmek ve server'daki bilgileri konsolda yazdırmak için:
     dbFiles klasörü altına dbConfig.js dosyasını oluştur ve içine SQL Server'a bağlantı bilgilerini içeren tanımlamayı yap
     dbFiles klasörü altına dbOperation.js dosyasını oluştur ve içine dbConfig.js'i ve mssql kütüphanesini import et
         dbOperation.js'de import ettiğin config'i, mssql kütüphanesine göndererek bağlantıyı gerçekleştir.
