@@ -23,7 +23,7 @@ app.post('/api', async(req, res) => {
     //  -oradan gelen cevabı da result'a atadık
     const result = await dbOperation.getEmployees(req.body.name);
 
-    //tetiklkendikten sonra geriye gönderilen cevabı(response) yazdık
+    // tetiklkendikten sonra geriye gönderilen cevabı(response) yazdık
     // res.send({result: 'OMG HI from server'});
 
     // dbOperation.js'in içindeki getEmployees metodundan gelen bilginin(result) altındaki recordset bilgisini cevap(res) olarak geri döndürdük
@@ -34,14 +34,13 @@ app.post('/api', async(req, res) => {
 app.post('/hello', async(req, res) => {
     await dbOperation.createEmployee(req.body);
     const result = await dbOperation.getEmployees(req.body.Firstname);
-    // await dbOperation.createEmployee(req.body);
-    // const result = await dbOperation.getEmployees(req.body.Firstname);
+    
     console.log('called /hello');
     res.send(result.recordset);
 });
 
 // import ettiğimiz Employee class modülünü new anahtarı ile oluşturup içine manuel olarak satır bilgilerini parametre olarak gönderdik
-let Pam = new Employee(1003, 'Pam', 'bee', 37, 'Female');
+// let Pam = new Employee(1003, 'Pam', 'bee', 37, 'Female');
 
 // dbOperation.getEmployees().then(res => {
 //     console.log("res = ", res.recordset);
