@@ -14,7 +14,7 @@ function App() {
     // e parametresinin altındaki target, girilen veriyi 'value', input'un name attribute'unu da 'name' adında yakalayacaktır 
     const {name, value} = e.target;
     // yakaladığımız, input'a girilen veriyi(value) ve veri girilen input'un name özelliğinin ismini(name), anlık olarak tarayıcı konsoluna yazdırdık
-    console.log(value, name);
+    console.log(value, name);  // Alper Firstname
 
     // Yakalanan verileri setEmployee ile useState ile tanımladığımız employee'ye set ettik
     // veritabanında EmployeeID ve Age'i number olarak tanımlamıştık dolayısıyla bu bilgiler integer olarak db'ye gitmeli. 
@@ -26,7 +26,8 @@ function App() {
       }));
     }
 
-    // Yakalanan verileri setEmployee ile useState ile tanımladığımız employee'ye set ettik
+    // Yakalanan verileri setEmployee ile useState'le tanımladığımız employee'ye set ettik
+    // ... yayılma operatörü
     setEmployee(prevState => ({
       ...prevState,
       [name]: value
@@ -65,6 +66,24 @@ function App() {
     setReturnedData(newData[0])
   }
 
+
+  const createEmployee = async () => {
+    const newData = await fetch('/hello', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ...employee
+      })
+    })
+    .then(res => res.json())
+
+    console.log(newData);
+    setReturnedData(newData[0])
+  }
+
   return (
     <div className="App">
 
@@ -75,7 +94,7 @@ function App() {
       <input name='Gender' placeholder='Gender' onChange={setInput}></input>
 
       <button onClick={() => fetchData()}>Click</button>
-      <button onClick={() => fetchData()}>Create</button>
+      <button onClick={() => createEmployee()}>Create</button>
 
 
       {/* Click butonuna tıklandığında fetchData metodu çalıştı ve bu metod useState'deki returnedData'ya DB'den gelen bilgileri aktardı */}
