@@ -35,14 +35,15 @@ function App() {
   }
 
 
+  // Click butonuna tıklandığında fetchData metodu çalışacaktır
   const fetchData = async () => {
     // Click butonuna tıklandığında tarayıcı konsolunda yukarıda useState ile tanımlanmış emmloyee'nin içeriği yazılacaktır
     console.log("fetchData employee = ", employee)
 
     // fetch ile /api adresinde server.js ile bağlantı kurduk. server.js'de de app.post('/api' şeklinde yapı oluşturduk
     //  -server.js'deki bu yapıdan gelen cevabı res.json() şeklinde yakalayıp newData'ya atadık
-    // server.js ile bağlantıdan sonra bir body kısmı oluşturduk. body'nin içinde useState ile oluşturduğumuz employee'nin içindeki Firstname bilgisini
-    //  -çağırıp bunu name olarak tanımladık ve bunu da Json String formatına çevirdik. Bu bilgi server.js'e req(request) olarak gidecektir
+    // server.js ile bağlantıdan sonra bir body kısmı oluşturduk. body'nin içinde useState ile oluşturduğumuz employee'nin içindeki setInput ile içi dolan Firstname bilgisini
+    //  -çağırıp bunu name olarak tanımladık ve bunu da Json String formatına çevirdik. Bu bilgiyi server.js req(request) olarak alacaktır
     const newData = await fetch('/api', {
       method: 'POST',
       headers: {
@@ -68,7 +69,12 @@ function App() {
   }
 
 
+  // Create butonuna tıklandığında createEmployee metodu çalışacaktır
   const createEmployee = async () => {
+    // fetch ile /hello adresinde server.js ile bağlantı kurduk. server.js'de de app.post('/hello' şeklinde yapı oluşturduk
+    //  -server.js'deki bu yapıdan gelen cevabı res.json() şeklinde yakalayıp newData'ya atadık
+    // server.js ile bağlantıdan sonra bir body kısmı oluşturduk. body'nin içinde useState ile oluşturduğumuz, setInput ile içini doldurduğumuz employee'yi çağırdık 
+    //  -ve bunu da Json String formatına çevirdik. Bu bilgiyi server.js req(request) olarak alacaktır
     const newData = await fetch('/hello', {
       method: 'POST',
       headers: {
@@ -81,7 +87,9 @@ function App() {
     })
     .then(res => res.json())
 
-    console.log(newData);
+    console.log("createEmployee newData = ", newData);
+
+    // server.js'den gelen newData dizi bilgisinin ilk elemanını useState'deki returnedData'ya set ettik(gönderdik)
     setReturnedData(newData[0])
   }
 

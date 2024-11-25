@@ -32,6 +32,6 @@
         geri return edecek(server.js'deki post yapısına return etmiş olacak)
     App.js'deki fetchData metodu kendine cevap olan gelen bilgiyi(Sayfada yazılan Firstname'in, DB'deki Firstname'i aynı olan datayı) useState ile tanımlanmış 
         returnedData'ya set edecek(gönderecek)
-    Son olarak sayfada returnedData'daki bilgileri teker teker ilgili yere yazdıracağız
+    Son olarak sayfada returnedData'daki bilgileri teker teker ilgili yere yazdırdık
     
 
