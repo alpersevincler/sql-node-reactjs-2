@@ -56,7 +56,8 @@ function App() {
     .then(res => res.json())
 
     //Click butonuna tıklandığında server.js'den gelen newData bilgisini tarayıcı konsolunda yazdırdık
-    console.log("fetchData fetch newData = ", newData); //result: 'OMG HI from server'
+    console.log("fetchData fetch newData = ", newData); //[{…}] -> 0: {EmployeeID: 1003, Firstname: 'fatma', Lastname: 'turk', Age: 26, Gender: 'Female'}
+    
 
     // yukarıda useState ile tanımlanmış returnedData'nın içeriğini newData'daki result'ın içeriği ile doldurduk ve sayfanın en altında {returnedData} şeklinde yazdırdık
     // setReturnedData(newData.result) //OMG HI from server

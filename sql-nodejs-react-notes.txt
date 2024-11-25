@@ -21,3 +21,17 @@
      Böylece konsola npm run dev yazınca paralel olarak "scripts": bloğunun altındaki hem "server": hem de "start" tanımlamaları çalıştıracaktır
 
 - API Portunun 5000 de düzgün şekilde koşması için package.json'daki genel bloğun içine "proxy": "http://localhost:5000" ifadesini yazmalısın
+
+- Sayfada Firstname bilgisi girilen kişininin(employee) Click butonuna tıklandığında bütün bilgilerinin gösterilmesi:
+    Sayfadaki input'lara bilgi girildiği anda App.js'deki setInput metodu çalışacak ve bu metot girilen bilgileri useState ile tanımlanan employee'ye set edecek(gönderecek)
+    Click butonuna tıklandığında App.js'deki fetchData metodu çalışacak. Bu metot server.js'deki app.post('/api',...) yapısını tetikleyecek ve employee'nin içindeki 
+        Firstname bilgisini hazır hale getirecek.
+    server.js'deki post yapısı aldığı Firstname bilgisini dbOperation.js'deki getEmployees metoduna gönderecek ve oradan gelen cevabı(DB'den gelen cevap) 
+        geri response olarak dönderecek(App.js'deki fetchData'nın içindeki newData'ya döndermiş olacak)
+    dbOperation.js'deki getEmployees metodu aldığı Firstname bilgisini kullanarak DB'ye sorgu gönderecek. DB'den gelen aynı Firstname bilgisine dahip satır bilgisini
+        geri return edecek(server.js'deki post yapısına return etmiş olacak)
+    App.js'deki fetchData metodu kendine cevap olan gelen bilgiyi(Sayfada yazılan Firstname'in, DB'deki Firstname'i aynı olan datayı) useState ile tanımlanmış 
+        returnedData'ya set edecek(gönderecek)
+    Son olarak sayfada returnedData'daki bilgileri teker teker ilgili yere yazdıracağız
+    
+
