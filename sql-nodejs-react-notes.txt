@@ -1,3 +1,9 @@
+- Bağlantı ayarlarını yapmadan önce Microsoft SQL Server Management Studio'da şu ayarı yap!:
+    Sol en üstteki server ismine(LAPTOP-B5A8-PMD) sağ tıklayıp "properties" seçeneğine tıkla
+    Çıkan pencereden sol taraftan "Security" sekmesine tıkla.
+    Buradan Server Authentication altındaki "SQL Server and Window Authentication Mode"'u seç ve OK butonuna tıkla
+    Son ve önemli olarak Windows arama kısmına "hizmetler" yaz ve çıkan listeden "SQL Server (SQLEXPRESS)"'a sağ tıklayıp "Yeniden Başlat"'a tıkla
+
 - SQL Server bağlantısını gerçekleştirmek ve server'daki bilgileri konsolda yazdırmak için:
     dbFiles klasörü altına dbConfig.js dosyasını oluştur ve içine SQL Server'a bağlantı bilgilerini içeren tanımlamayı yap
     dbFiles klasörü altına dbOperation.js dosyasını oluştur ve içine dbConfig.js'i ve mssql kütüphanesini import et
