@@ -25,7 +25,7 @@
 - Sayfada Firstname bilgisi girilen kişininin(employee) Click butonuna tıklandığında bütün bilgilerinin gösterilmesi:
     Sayfadaki input'lara bilgi girildiği anda App.js'deki setInput metodu çalışacak ve bu metot girilen bilgileri useState ile tanımlanan employee'ye set edecek(gönderecek)
     Click butonuna tıklandığında App.js'deki fetchData metodu çalışacak. Bu metot server.js'deki app.post('/api',...) yapısını tetikleyecek ve employee'nin içindeki 
-        Firstname bilgisini hazır hale getirecek.
+        Firstname bilgisini server.js'in parametre olarak almasına hazır hale getirecek.
     server.js'deki post yapısı aldığı Firstname bilgisini dbOperation.js'deki getEmployees metoduna gönderecek ve oradan gelen cevabı(DB'den gelen cevap) 
         geri response olarak dönderecek(App.js'deki fetchData'nın içindeki newData'ya döndermiş olacak)
     dbOperation.js'deki getEmployees metodu aldığı Firstname bilgisini kullanarak DB'ye sorgu gönderecek. DB'den gelen aynı Firstname bilgisine dahip satır bilgisini
@@ -33,5 +33,17 @@
     App.js'deki fetchData metodu kendine cevap olan gelen bilgiyi(Sayfada yazılan Firstname'in, DB'deki Firstname'i aynı olan datayı) useState ile tanımlanmış 
         returnedData'ya set edecek(gönderecek)
     Son olarak sayfada returnedData'daki bilgileri teker teker ilgili yere yazdırdık
-    
 
+- Sayfadan bilgi girip Create butonuna tıklandığında DB'ye bilgilerin kaydedilmesi:
+    Sayfadaki input'lara bilgi girildiği anda App.js'deki setInput metodu çalışacak ve bu metot girilen bilgileri useState ile tanımlanan employee'ye set edecek(gönderecek)
+    Create butonuna tıklandığında App.js'deki createEmployee metodu çalışacak. Bu metot server.js'deki app.post('/hello',...) yapısını tetikleyecek ve useState'deki employee
+        objesini server.js'in parametre olarak almasına hazır hale getirecek.
+    server.js'deki post yapısı aldığı employee bilgisini dbOperation.js'deki createEmployee metoduna sonra ise employee objesinin içindeki Firstname bilgisini ise
+        dbOperation.js'deki getEmployees metoduna gönderecek. getEmployees'den gelen cevabı geri dönderecek.( Böylece App.js'deki createEmployee'nın içindeki newData'ya 
+        yeni eklenmiş olan dataları geri döndermiş olacak )
+    dbOperation.js'deki createEmployee metodu aldığı employee bilgisinin içindeki bütün satır bilgilerini teker teker kullanarak DB'ye sorgu gönderecek. DB'den gelen cevabı
+        geri return edecek ve böylece DB'de yeni kayıt oluşturulmuş olacak.
+        Benzer şekilde dbOperation.js'deki getEmployees metodu aldığı Firstname bilgisini kullanarak DB'ye sorgu gönderecek. DB'den gelen yeni eklenmiş kayıt bilgisini de
+        geri dönderecek. (Yeni kayıt bilgilerini server.js'deki app.post('/hello',...) yapısına geri döndermiş olacak)
+    App.js'deki createEmployee metodu kendine cevap olan gelen yeni kayıt bilgisini(newData) useState ile tanımlanmış returnedData'ya set edecek(gönderecek)
+    Son olarak sayfada returnedData'daki yeni oluşturulmuş bilgileri teker teker ilgili yere yazdırdık
