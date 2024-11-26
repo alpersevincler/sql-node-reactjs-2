@@ -31,11 +31,17 @@ app.post('/api', async(req, res) => {
 });
 
 
+// App.js'deki Create butonuna tıklayınca createEmployee metodu ile bu post yapısı tetiklenecek ve geriye bir response gönderecek
 app.post('/hello', async(req, res) => {
+    // App.js'den gelen bilginin(req) altındaki body(employee) bilgisini yeni kayıt oluşturması için dbOperation.js'in içindeki createEmployee metoduna gönderdik.
     await dbOperation.createEmployee(req.body);
+    // Oluşan yeni kayıt bilgisini okumak(getirmek) için newData'nın altındaki body'nin(employee) içindeki yeni girilen Firstname bilgisini getEmployees metoduna gönderdik.
+    //  -oradan gelen cevabı da result'a atadık
     const result = await dbOperation.getEmployees(req.body.Firstname);
     
     console.log('called /hello');
+
+    // dbOperation.js'in içindeki getEmployees metodundan gelen yeni oluşturulmuş data bilgisini geri response olarak gönderdik
     res.send(result.recordset);
 });
 
