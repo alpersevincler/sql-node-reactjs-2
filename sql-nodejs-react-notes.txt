@@ -13,7 +13,7 @@
     Ana dizine server.js dosyasını oluştur ve içine dbOperation.js'i import et.
         dbOperation'un içindeki fonksiyonu çağır ve oradan gelecek cevabı konsolda yazdırabilirsin
 
-- package.json dosyasına "server": "nodemon server.js", ifadesini eklersen konsola "npm run server" yazdıktan sonra artık nodemon 
+- package.json dosyasına "server": "nodemon server.js", ifadesini eklersen konsola "npm run server" yazdıktan sonra artık nodemon, 
     her kayıt aldığında otomatik server.js'i çalıştıracaktır
 
 - Manuel Create işlemi kurgulamak adına:
@@ -24,11 +24,11 @@
 
 - Konsola "npm i npm-run-all" yazıp npm-run-all paketini indirerek aynı anda hem Server'ı hem de React uygulamasını başlatabilirsin
     Paketi yükledikten sonra package.json dosyasındaki "scripts": bloğunun altına "dev": "run-p server start" ifadesini yaz.
-     Böylece konsola npm run dev yazınca paralel olarak "scripts": bloğunun altındaki hem "server": hem de "start" tanımlamaları çalıştıracaktır
+     Böylece konsola npm run dev yazınca paralel olarak "scripts": bloğunun altındaki hem "server": hem de "start" tanımlamaları çalışacaktır
 
 - API Portunun 5000 de düzgün şekilde koşması için package.json'daki genel bloğun içine "proxy": "http://localhost:5000" ifadesini yazmalısın
 
-- Sayfada Firstname bilgisi girilen kişininin(employee) Click butonuna tıklandığında bütün bilgilerinin gösterilmesi:
+- Sayfada Firstname bilgisi girilen kişininin(employee) Click butonuna tıklandığında bütün bilgilerinin gösterilmesi (READ):
     Sayfadaki input'lara bilgi girildiği anda App.js'deki setInput metodu çalışacak ve bu metot girilen bilgileri useState ile tanımlanan employee'ye set edecek(gönderecek)
     Click butonuna tıklandığında App.js'deki fetchData metodu çalışacak. Bu metot server.js'deki app.post('/api',...) yapısını tetikleyecek ve employee'nin içindeki 
         Firstname bilgisini server.js'in parametre olarak almasına hazır hale getirecek.
@@ -40,16 +40,16 @@
         returnedData'ya set edecek(gönderecek)
     Son olarak sayfada returnedData'daki bilgileri teker teker ilgili yere yazdırdık
 
-- Sayfadan bilgi girip Create butonuna tıklandığında DB'ye bilgilerin kaydedilmesi:
+- Sayfadan bilgi girip Create butonuna tıklandığında DB'ye bilgilerin kaydedilmesi (CREATE):
     Sayfadaki input'lara bilgi girildiği anda App.js'deki setInput metodu çalışacak ve bu metot girilen bilgileri useState ile tanımlanan employee'ye set edecek(gönderecek)
     Create butonuna tıklandığında App.js'deki createEmployee metodu çalışacak. Bu metot server.js'deki app.post('/hello',...) yapısını tetikleyecek ve useState'deki employee
         objesini server.js'in parametre olarak almasına hazır hale getirecek.
-    server.js'deki post yapısı aldığı employee bilgisini dbOperation.js'deki createEmployee metoduna sonra ise employee objesinin içindeki Firstname bilgisini ise
+    server.js'deki post yapısı aldığı employee bilgisini dbOperation.js'deki createEmployee metoduna, sonra ise employee objesinin içindeki Firstname bilgisini ise
         dbOperation.js'deki getEmployees metoduna gönderecek. getEmployees'den gelen cevabı geri dönderecek.( Böylece App.js'deki createEmployee'nın içindeki newData'ya 
         yeni eklenmiş olan dataları geri döndermiş olacak )
     dbOperation.js'deki createEmployee metodu aldığı employee bilgisinin içindeki bütün satır bilgilerini teker teker kullanarak DB'ye sorgu gönderecek. DB'den gelen cevabı
         geri return edecek ve böylece DB'de yeni kayıt oluşturulmuş olacak.
         Benzer şekilde dbOperation.js'deki getEmployees metodu aldığı Firstname bilgisini kullanarak DB'ye sorgu gönderecek. DB'den gelen yeni eklenmiş kayıt bilgisini de
         geri dönderecek. (Yeni kayıt bilgilerini server.js'deki app.post('/hello',...) yapısına geri döndermiş olacak)
-    App.js'deki createEmployee metodu kendine cevap olan gelen yeni kayıt bilgisini(newData) useState ile tanımlanmış returnedData'ya set edecek(gönderecek)
+    App.js'deki createEmployee metodu kendine cevap olarak gelen yeni kayıt bilgisini(newData) useState ile tanımlanmış returnedData'ya set edecek(gönderecek)
     Son olarak sayfada returnedData'daki yeni oluşturulmuş bilgileri teker teker ilgili yere yazdırdık
